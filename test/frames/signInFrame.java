@@ -1,32 +1,41 @@
 package frames;
 
 import common.WebDriverProvider;
-import entities.LoginCredential;
-import org.openqa.selenium.By;
+import entities.SigninCredential;
 import org.openqa.selenium.WebDriver;
 import page.HomePage;
 
-import static common.WebDriverFunctions.*;
+import static common.WebDriverFunctions.WaitForElementPresent;
 import static elements.SignInElements.*;
 
 public class SignInFrame {
     private WebDriver driver = WebDriverProvider.getWebDriver();
 
-    public SignInFrame giveValidCredentials(LoginCredential values) {
-        WaitForElementPresent(driver, signInIFrame());
-        driver.switchTo().frame(driver.findElement(signInIFrame()));
+    public SignInFrame giveValidCredentials(SigninCredential values) {
+        switchToSignInFrame();
         giveValuesForSignInInputField(values);
         return this;
     }
 
-    private void giveValuesForSignInInputField(LoginCredential values)
+    private void switchToSignInFrame() {
+        WaitForElementPresent(driver, signInIFrame());
+        driver.switchTo().frame(driver.findElement(signInIFrame()));
+    }
+
+    private void giveValuesForSignInInputField(SigninCredential values)
     {
         driver.findElement(userName()).sendKeys(values.username);
         driver.findElement(password()).sendKeys(values.password);
     }
 
-    public HomePage submitLogin() {
-        driver.findElement(By.id("sign_in")).click();
+    public HomePage submitSignin() {
+        driver.findElement(signInButton()).click();
         return new HomePage();
+    }
+
+    public ResetPasswordFrame clickOnResetPassword() {
+        switchToSignInFrame();
+        driver.findElement(forgetPassword()).click();
+        return new ResetPasswordFrame();
     }
 }

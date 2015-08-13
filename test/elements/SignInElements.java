@@ -18,4 +18,14 @@ public class SignInElements {
     {
         return By.id("pwd-txt");
     }
+
+    public static By forgetPassword()
+    {
+        return By.cssSelector("form#signin_form a.fl.link");
+    }
+
+    public static By signInButton()
+    {
+        return By.id("sign_in");
+    }
 }
