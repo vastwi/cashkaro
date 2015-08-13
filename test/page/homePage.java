@@ -6,8 +6,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import static common.WebDriverFunctions.WaitForElementPresent;
-import static elements.HomePageElements.myAccountButton;
-import static elements.HomePageElements.signInButton;
+import static elements.HomePageElements.*;
 
 public class HomePage {
     private WebDriver driver = WebDriverProvider.getWebDriver();

@@ -1,7 +1,7 @@
 package frames;
 
 import common.WebDriverProvider;
-import entities.ResetPassword;
+import entities.EmailAddress;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
@@ -11,7 +11,7 @@ import static elements.ResetPasswordElements.*;
 public class ResetPasswordFrame {
     private WebDriver driver = WebDriverProvider.getWebDriver();
 
-    public ResetPasswordFrame giveUserName(ResetPassword resetPassword) {
+    public ResetPasswordFrame giveUserName(EmailAddress resetPassword) {
         WaitForElementPresent(driver, resetEmailAddress());
         driver.findElement(resetEmailAddress()).sendKeys(resetPassword.emailAddress);
         return this;

@@ -1,7 +1,7 @@
 package frames;
 
 import common.WebDriverProvider;
-import entities.SigninCredential;
+import entities.Credential;
 import org.openqa.selenium.WebDriver;
 import page.HomePage;
 
@@ -11,18 +11,18 @@ import static elements.SignInElements.*;
 public class SignInFrame {
     private WebDriver driver = WebDriverProvider.getWebDriver();
 
-    public SignInFrame giveValidCredentials(SigninCredential values) {
+    public SignInFrame giveValidCredentials(Credential values) {
         switchToSignInFrame();
         giveValuesForSignInInputField(values);
         return this;
     }
 
-    private void switchToSignInFrame() {
+    private void switchToSignInFrame(){
         WaitForElementPresent(driver, signInIFrame());
         driver.switchTo().frame(driver.findElement(signInIFrame()));
     }
 
-    private void giveValuesForSignInInputField(SigninCredential values)
+    private void giveValuesForSignInInputField(Credential values)
     {
         driver.findElement(userName()).sendKeys(values.username);
         driver.findElement(password()).sendKeys(values.password);

@@ -1,7 +1,7 @@
 package tests;
 
-import factory.ResetPasswordFactory;
-import factory.SigninCredentialsFactory;
+import factory.EmailAddressFactory;
+import factory.CredentialsFactory;
 import org.junit.Test;
 import page.HomePage;
 
@@ -12,7 +12,7 @@ public class SigninTest extends BaseTest {
     {
         new HomePage()
                 .clickOnSignIn()
-                .giveValidCredentials(SigninCredentialsFactory.getValidCredentials())
+                .giveValidCredentials(CredentialsFactory.getValidCredentials())
                 .submitSignin()
                 .checkIfUserIsInLoggedInHomePage();
     }
@@ -23,7 +23,7 @@ public class SigninTest extends BaseTest {
         new HomePage()
                 .clickOnSignIn()
                 .clickOnResetPassword()
-                .giveUserName(ResetPasswordFactory.getValidEmailAddress())
+                .giveUserName(EmailAddressFactory.getValidEmailAddress())
                 .submitResetPassword()
                 .checkIfMessageForResetAppears();
     }

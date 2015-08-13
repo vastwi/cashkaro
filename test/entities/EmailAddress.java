@@ -1,9 +1,9 @@
 package entities;
 
-public class ResetPassword {
+public class EmailAddress {
     public String emailAddress;
 
-    public ResetPassword(String emailAddress){
+    public EmailAddress(String emailAddress){
         this.emailAddress = emailAddress;
     }
 }
