@@ -6,27 +6,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import page.HomePage;
 
-import static common.WebDriverFunctions.WaitForElementPresent;
+import static common.WebDriverFunctions.*;
+import static elements.SignInElements.*;
 
 public class SignInFrame {
     private WebDriver driver = WebDriverProvider.getWebDriver();
 
-    private By signInIFrameElement()
-    {
-        return By.cssSelector("iframe.cboxIframe");
-    }
-
     public SignInFrame giveValidCredentials(LoginCredential values) {
-        WaitForElementPresent(driver, signInIFrameElement());
-        driver.switchTo().frame(driver.findElement(signInIFrameElement()));
+        WaitForElementPresent(driver, signInIFrame());
+        driver.switchTo().frame(driver.findElement(signInIFrame()));
         giveValuesForSignInInputField(values);
         return this;
     }
 
     private void giveValuesForSignInInputField(LoginCredential values)
     {
-        driver.findElement(By.id("uname")).sendKeys(values.username);
-        driver.findElement(By.id("pwd-txt")).sendKeys(values.password);
+        driver.findElement(userName()).sendKeys(values.username);
+        driver.findElement(password()).sendKeys(values.password);
     }
 
     public HomePage submitLogin() {

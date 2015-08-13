@@ -1,6 +1,6 @@
 package tests;
 
-import factory.LoginCredentials;
+import factory.LoginCredentialsFactory;
 import org.junit.Test;
 import page.HomePage;
 
@@ -11,7 +11,7 @@ public class LoginTest extends BaseTest {
     {
         new HomePage()
                 .clickOnSignIn()
-                .giveValidCredentials(LoginCredentials.getValidCredentials())
+                .giveValidCredentials(LoginCredentialsFactory.getValidCredentials())
                 .submitLogin()
                 .checkIfUserIsInLoggedInHomePage();
     }
