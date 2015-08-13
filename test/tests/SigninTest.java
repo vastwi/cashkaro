@@ -1,5 +1,6 @@
 package tests;
 
+import factory.ResetPasswordFactory;
 import factory.SigninCredentialsFactory;
 import org.junit.Test;
 import page.HomePage;
@@ -22,9 +23,8 @@ public class SigninTest extends BaseTest {
         new HomePage()
                 .clickOnSignIn()
                 .clickOnResetPassword()
-                .giveUserName()
+                .giveUserName(ResetPasswordFactory.getValidEmailAddress())
                 .submitResetPassword()
                 .checkIfMessageForResetAppears();
     }
-
 }

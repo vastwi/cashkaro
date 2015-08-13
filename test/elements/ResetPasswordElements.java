@@ -14,7 +14,7 @@ public class ResetPasswordElements {
         return By.id("submit_req");
     }
 
-    public static By passwordSentFrame()
+    public static By passwordSentMessage()
     {
         return By.cssSelector("div.f_pass_s h2");
     }

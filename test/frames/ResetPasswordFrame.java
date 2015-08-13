@@ -1,6 +1,7 @@
 package frames;
 
 import common.WebDriverProvider;
+import entities.ResetPassword;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
@@ -10,9 +11,9 @@ import static elements.ResetPasswordElements.*;
 public class ResetPasswordFrame {
     private WebDriver driver = WebDriverProvider.getWebDriver();
 
-    public ResetPasswordFrame giveUserName() {
+    public ResetPasswordFrame giveUserName(ResetPassword resetPassword) {
         WaitForElementPresent(driver, resetEmailAddress());
-        driver.findElement(resetEmailAddress()).sendKeys("checkworking1@gmail.com");
+        driver.findElement(resetEmailAddress()).sendKeys(resetPassword.emailAddress);
         return this;
     }
 
@@ -22,8 +23,8 @@ public class ResetPasswordFrame {
     }
 
     public ResetPasswordFrame checkIfMessageForResetAppears() {
-        WaitForElementPresent(driver, passwordSentFrame());
-        Assert.assertEquals(driver.findElement(passwordSentFrame()).getText(), "Password sent!");
+        WaitForElementPresent(driver, passwordSentMessage());
+        Assert.assertEquals(driver.findElement(passwordSentMessage()).getText(), "Password sent!");
         return this;
     }
 }
